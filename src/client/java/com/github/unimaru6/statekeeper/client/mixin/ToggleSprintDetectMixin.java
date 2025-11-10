@@ -29,10 +29,8 @@ public class ToggleSprintDetectMixin {
             if (keyId.equals("key.sprint")) {
                 if (pressed) {
                     StatekeeperClient.setSprintState(true);
-                    StatekeeperClient.LOGGER.info("sprint key pressed");
                 } else {
                     StatekeeperClient.setSprintState(false);
-                    StatekeeperClient.LOGGER.info("sprint key released");
                 }
             }
         }
