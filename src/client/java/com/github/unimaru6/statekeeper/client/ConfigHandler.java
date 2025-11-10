@@ -16,6 +16,9 @@ public class ConfigHandler {
     public static void makeConfigFile() {
         if (!Files.exists(configPath)) {
             try {
+                if (configPath.getParent() != null) {
+                    Files.createDirectories(configPath.getParent());
+                }
                 Files.createFile(configPath);
             } catch (IOException e) {
                 e.printStackTrace();
