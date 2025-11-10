@@ -22,6 +22,7 @@ public class ToggleSprintDetectMixin {
     @Inject(method = "setPressed", at = @At("TAIL"))
     private void onSetPressed(boolean pressed, CallbackInfo ci) {
         if (MinecraftClient.getInstance().options.getSprintToggled().getValue()) {
+            // 自クラスをキャスト
             KeyBinding key = (KeyBinding) (Object) this;
 
             String keyId = key.getTranslationKey();

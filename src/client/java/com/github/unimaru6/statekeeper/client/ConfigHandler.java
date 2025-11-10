@@ -36,10 +36,11 @@ public class ConfigHandler {
         }
     }
 
-    public static void saveConfig(boolean isSprintState) {
+    public static void saveConfig(boolean isSprintState, boolean isRenderHitboxesState) {
         if (Files.exists(configPath)) {
             try {
-                Files.writeString(configPath, "{ \"sprintState\": " + isSprintState + " }");
+                Files.writeString(configPath, "{ \"sprintState\": " + isSprintState + ", \"renderHitboxesState\": "
+                        + isRenderHitboxesState + " }");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -57,4 +58,14 @@ public class ConfigHandler {
         return false;
     }
 
+    public static boolean getRenderHitboxesState() {
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(configJson, JsonObject.class);
+        if (jsonObject != null) {
+            if (jsonObject.has("renderHitboxesState")) {
+                return jsonObject.get("renderHitboxesState").getAsBoolean();
+            }
+        }
+        return false;
+    }
 }
