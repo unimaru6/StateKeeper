@@ -1,5 +1,6 @@
-This mod keeps Particular state even if you log-out from the game.
+This mod keeps particular state even if you log-out from the game.
 
 ## states that this mod keeps:
-- ToggleSprint
+- togglesprint
 - F3 + B
+- 
