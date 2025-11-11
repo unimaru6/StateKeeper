@@ -34,10 +34,12 @@ public class StatekeeperClient implements ClientModInitializer {
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
             if (!hasJoinedServer) {
                 if (savedSprintState) {
+                    // ※Mixinを適用したメソッドを実行するため、SprintState(true)に再度trueを代入する
                     client.options.sprintKey.setPressed(true);
                 }
                 if (savedRenderHitboxesState) {
                     entityRenderDispatcher = MinecraftClient.getInstance().getEntityRenderDispatcher();
+                    // ※Mixinを適用したメソッドを実行するため、savedRenderHitboxesState(true)に再度trueを代入する
                     entityRenderDispatcher.setRenderHitboxes(true);
                 }
                 hasJoinedServer = true;
