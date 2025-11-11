@@ -24,10 +24,7 @@ public class StatekeeperClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        // 設定ファイルを作成
-        ConfigHandler.makeConfigFile();
-        // 設定ファイルを読み込み
-        ConfigHandler.loadConfig();
+        ConfigHandler.initializeConfig();
 
         // 設定ファイルからセーブした状態を取得
         boolean savedSprintState = ConfigHandler.getSprintState();

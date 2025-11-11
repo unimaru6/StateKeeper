@@ -12,8 +12,16 @@ public class ConfigHandler {
 
     private static final Path configPath = Paths.get("config", "togglesprintfixerconfig.json");
     private static String configJson = "";
+    private static boolean sprintState = false;
+    private static boolean renderHitboxesState = false;
 
-    public static void makeConfigFile() {
+    public static void initializeConfig() {
+        makeConfigFile();
+        loadConfig();
+        loadSavedState();
+    }
+
+    private static void makeConfigFile() {
         if (!Files.exists(configPath)) {
             try {
                 if (configPath.getParent() != null) {
@@ -26,13 +34,28 @@ public class ConfigHandler {
         }
     }
 
-    public static void loadConfig() {
+    private static void loadConfig() {
         if (Files.exists(configPath)) {
             try {
                 configJson = Files.readString(configPath);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private static void loadSavedState() {
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(configJson, JsonObject.class);
+        // null時false
+        if (jsonObject != null) {
+            if (jsonObject.has("sprintState")) {
+                sprintState = jsonObject.get("sprintState").getAsBoolean();
+            }
+            if (jsonObject.has("renderHitboxesState")) {
+                renderHitboxesState = jsonObject.get("renderHitboxesState").getAsBoolean();
+            }
+            // state追加時ここに処理を追加
         }
     }
 
@@ -48,24 +71,12 @@ public class ConfigHandler {
     }
 
     public static boolean getSprintState() {
-        Gson gson = new Gson();
-        JsonObject jsonObject = gson.fromJson(configJson, JsonObject.class);
-        if (jsonObject != null) {
-            if (jsonObject.has("sprintState")) {
-                return jsonObject.get("sprintState").getAsBoolean();
-            }
-        }
-        return false;
+        return sprintState;
     }
 
     public static boolean getRenderHitboxesState() {
-        Gson gson = new Gson();
-        JsonObject jsonObject = gson.fromJson(configJson, JsonObject.class);
-        if (jsonObject != null) {
-            if (jsonObject.has("renderHitboxesState")) {
-                return jsonObject.get("renderHitboxesState").getAsBoolean();
-            }
-        }
-        return false;
+        return renderHitboxesState;
     }
+
+    // state追加時ここに処理を追加
 }
