@@ -18,7 +18,7 @@ public class StatekeeperClient implements ClientModInitializer {
     private boolean hasJoinedServer = false;
     private EntityRenderDispatcher entityRenderDispatcher;
 
-    public static final String MOD_ID = "togglesprintfixer";
+    public static final String MOD_ID = "statekeeper";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     @Override

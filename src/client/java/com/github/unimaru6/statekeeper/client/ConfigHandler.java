@@ -10,7 +10,7 @@ import com.google.gson.JsonObject;
 
 public class ConfigHandler {
 
-    private static final Path configPath = Paths.get("config", "togglesprintfixerconfig.json");
+    private static final Path configPath = Paths.get("config", "statekeeperconfig.json");
     private static String configJson = "";
     private static boolean sprintState = false;
     private static boolean renderHitboxesState = false;
