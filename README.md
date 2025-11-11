@@ -1,4 +1,4 @@
-This mod keeps particular state even if you log-out from the game.
+This mod keeps specific states even after logging out from the game.
 
 ## states that this mod keeps:
 - togglesprint
