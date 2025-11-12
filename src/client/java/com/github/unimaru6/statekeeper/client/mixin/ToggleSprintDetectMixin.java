@@ -13,12 +13,6 @@ import com.github.unimaru6.statekeeper.client.StatekeeperClient;
 @Mixin(KeyBinding.class)
 public class ToggleSprintDetectMixin {
 
-    /**
-     * called when the sprint key is pressed or released
-     *
-     * @param pressed true if the sprint key is pressed, false if the sprint key is
-     *                released
-     */
     @Inject(method = "setPressed", at = @At("TAIL"))
     private void onSetPressed(boolean pressed, CallbackInfo ci) {
         if (MinecraftClient.getInstance().options.getSprintToggled().getValue()) {
