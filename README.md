@@ -1,5 +1,6 @@
-This mod keeps specific states even after logging out from the game.
+When you quit from minecraft, specific states (e.g.togglesprint on-off) will be reset. 
+This mod saves the states before exiting minecraft and load it when restarting to prevent this.
 
-## states that this mod keeps:
+## The following states are saved:
 - togglesprint
-- F3 + B
+- F3+B entity hitboxes
